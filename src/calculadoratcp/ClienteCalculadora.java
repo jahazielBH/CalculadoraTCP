@@ -48,18 +48,26 @@ public class ClienteCalculadora {
             double apotema;
             double area;
             double volumen;
-            System.out.println("ELIGA UNA FIGURA GEOMETRICA");
+            System.out.println("CALCULAR AREA ELIGA UNA FIGURA GEOMETRICA");
             System.out.println("(1) CILINDRO");
             System.out.println("(2) ESFERA");
             System.out.println("(3) CONO");
             System.out.println("(4) CUBO");
             System.out.println("(5) PRISMA");
             System.out.println("(6) PIRAMIDE");
-            System.out.println("(7) Salir");
+            System.out.println("CALCULAR VOLUMEN ELIGA UNA FIGURA GEOMETRICA");
+            System.out.println("(7) CILINDRO");
+            System.out.println("(8) ESFERA");
+            System.out.println("(9) CONO");
+            System.out.println("(10) CUBO");
+            System.out.println("(11) PRISMA");
+            System.out.println("(12) PIRAMIDE");
+            System.out.println("(13) Salir");
+            System.out.println("Ingresar Opcion: ");
             operation = sc.nextInt();
             switch (operation) {
                 case 1:
-                    System.out.println("Calculando Area y Volumen de CILINDRO");
+                    System.out.println("Calculando Area de CILINDRO");
                     System.out.println("Ingresa el radio: ");
                     radio = sc.nextDouble();
                     System.out.println("Ingresa la altura: ");
@@ -68,7 +76,6 @@ public class ClienteCalculadora {
                     socketCliente = new Socket(ipServidor, _PUERTO);
 
                     inputArea = new DataInputStream(socketCliente.getInputStream());
-                    inputVolumen = new DataInputStream(socketCliente.getInputStream());
 
                     outputOpcion = new DataOutputStream(socketCliente.getOutputStream());
                     outputRadio = new DataOutputStream(socketCliente.getOutputStream());
@@ -79,25 +86,23 @@ public class ClienteCalculadora {
                     outputAltura.writeDouble(altura);
 
                     area = inputArea.readDouble();
-                    volumen = inputVolumen.readDouble();
 
-                    System.out.println("Area = " + area + "\tVolumen = " + volumen);
+                    System.out.println("Entrada : " + "Radio = " + radio + ", " + "Altura = " + altura +"\tSalida : Area = " + area + "\n");
+                    
                     inputArea.close();
-                    inputVolumen.close();
 
                     outputOpcion.close();
                     outputAltura.close();
                     outputRadio.close();
                     break;
                 case 2:
-                    System.out.println("Calculando Area y Volumen de ESFERA");
+                    System.out.println("Calculando Area de ESFERA");
                     System.out.println("Ingresa el radio: ");
                     radio = sc.nextDouble();
 
                     socketCliente = new Socket(ipServidor, _PUERTO);
 
                     inputArea = new DataInputStream(socketCliente.getInputStream());
-                    inputVolumen = new DataInputStream(socketCliente.getInputStream());
 
                     outputOpcion = new DataOutputStream(socketCliente.getOutputStream());
                     outputRadio = new DataOutputStream(socketCliente.getOutputStream());
@@ -106,17 +111,16 @@ public class ClienteCalculadora {
                     outputRadio.writeDouble(radio);
 
                     area = inputArea.readDouble();
-                    volumen = inputVolumen.readDouble();
 
-                    System.out.println("Area = " + area + "\tVolumen = " + volumen);
+                    System.out.println("Entrada : " + "Radio = " + radio + "\tSalida : Area = " + area + "\n");
+                    
                     inputArea.close();
-                    inputVolumen.close();
 
                     outputOpcion.close();
                     outputRadio.close();
                     break;
                 case 3:
-                    System.out.println("Calculando Area y Volumen de CONO");
+                    System.out.println("Calculando Area de CONO");
                     System.out.println("Ingresa el radio: ");
                     radio = sc.nextDouble();
                     System.out.println("Ingresa la altura: ");
@@ -127,7 +131,6 @@ public class ClienteCalculadora {
                     socketCliente = new Socket(ipServidor, _PUERTO);
 
                     inputArea = new DataInputStream(socketCliente.getInputStream());
-                    inputVolumen = new DataInputStream(socketCliente.getInputStream());
 
                     outputOpcion = new DataOutputStream(socketCliente.getOutputStream());
                     outputRadio = new DataOutputStream(socketCliente.getOutputStream());
@@ -140,11 +143,10 @@ public class ClienteCalculadora {
                     outputGeneratriz.writeDouble(generatriz);
 
                     area = inputArea.readDouble();
-                    volumen = inputVolumen.readDouble();
 
-                    System.out.println("Area = " + area + "\tVolumen = " + volumen);
+                    System.out.println("Entrada : " + "Radio = " + radio + ", Altura = " + altura + ", Generatriz = " + generatriz +"\tSalida : Area = " + area + "\n");
+                    
                     inputArea.close();
-                    inputVolumen.close();
 
                     outputOpcion.close();
                     outputAltura.close();
@@ -152,14 +154,13 @@ public class ClienteCalculadora {
                     outputGeneratriz.close();
                     break;
                 case 4:
-                    System.out.println("Calculando Area y Volumen de CUBO");
+                    System.out.println("Calculando Area de CUBO");
                     System.out.println("Ingresa la arista: ");
                     arista = sc.nextDouble();
                     
                     socketCliente = new Socket(ipServidor, _PUERTO);
 
                     inputArea = new DataInputStream(socketCliente.getInputStream());
-                    inputVolumen = new DataInputStream(socketCliente.getInputStream());
 
                     outputOpcion = new DataOutputStream(socketCliente.getOutputStream());
                     outputArista = new DataOutputStream(socketCliente.getOutputStream());
@@ -168,17 +169,16 @@ public class ClienteCalculadora {
                     outputArista.writeDouble(arista);
 
                     area = inputArea.readDouble();
-                    volumen = inputVolumen.readDouble();
 
-                    System.out.println("Area = " + area + "\tVolumen = " + volumen);
+                    System.out.println("Entrada : " + "Arista = " + arista +"\tSalida : Area = " + area + "\n");
+                    
                     inputArea.close();
-                    inputVolumen.close();
 
                     outputOpcion.close();
                     outputArista.close();
                     break;
                 case 5:
-                    System.out.println("Calculando Area y Volumen de PRISMA");
+                    System.out.println("Calculando Area de PRISMA");
                     System.out.println("Ingrese el perimetro base: ");
                     perimetroBase = sc.nextDouble();
                     System.out.println("Ingresa la altura: ");
@@ -189,7 +189,6 @@ public class ClienteCalculadora {
                     socketCliente = new Socket(ipServidor, _PUERTO);
 
                     inputArea = new DataInputStream(socketCliente.getInputStream());
-                    inputVolumen = new DataInputStream(socketCliente.getInputStream());
 
                     outputOpcion = new DataOutputStream(socketCliente.getOutputStream());
                     outputPerimetroBase = new DataOutputStream(socketCliente.getOutputStream());
@@ -202,11 +201,9 @@ public class ClienteCalculadora {
                     outputAreaBase.writeDouble(areaBase);
 
                     area = inputArea.readDouble();
-                    volumen = inputVolumen.readDouble();
-
-                    System.out.println("Area = " + area + "\tVolumen = " + volumen);
+                    
+                    System.out.println("Entrada : " + "Perimetro Base = " + perimetroBase + ", Altura = " + altura + ", Area Base = " + areaBase + "\tSalida : Area = " + area);
                     inputArea.close();
-                    inputVolumen.close();
 
                     outputOpcion.close();
                     outputPerimetroBase.close();
@@ -214,7 +211,7 @@ public class ClienteCalculadora {
                     outputAreaBase.close();
                     break;
                 case 6:
-                    System.out.println("Calculando Area y Volumen de PIRAMIDE");
+                    System.out.println("Calculando Area de PIRAMIDE");
                     System.out.println("Ingrese el perimetro base: ");
                     perimetroBase = sc.nextDouble();
                     System.out.println("Ingresa la altura: ");
@@ -227,7 +224,6 @@ public class ClienteCalculadora {
                     socketCliente = new Socket(ipServidor, _PUERTO);
 
                     inputArea = new DataInputStream(socketCliente.getInputStream());
-                    inputVolumen = new DataInputStream(socketCliente.getInputStream());
 
                     outputOpcion = new DataOutputStream(socketCliente.getOutputStream());
                     outputPerimetroBase = new DataOutputStream(socketCliente.getOutputStream());
@@ -242,11 +238,9 @@ public class ClienteCalculadora {
                     outputApotema.writeDouble(apotema);
                     
                     area = inputArea.readDouble();
-                    volumen = inputVolumen.readDouble();
-
-                    System.out.println("Area = " + area + "\tVolumen = " + volumen);
+                    
+                    System.out.println("Entrada : " + "Perimetro Base = " + perimetroBase + ", Altura = " + altura + ", Area Base = " + areaBase + ", Apotema = " + apotema +"\tSalida : Area = " + area);
                     inputArea.close();
-                    inputVolumen.close();
 
                     outputOpcion.close();
                     outputPerimetroBase.close();
@@ -255,7 +249,191 @@ public class ClienteCalculadora {
                     outputApotema.close();
                     break;
                 case 7:
-                    res = false;
+                    System.out.println("Calculando Volumen del CILINDRO");
+                    System.out.println("Ingresa el radio: ");
+                    radio = sc.nextDouble();
+                    System.out.println("Ingresa la altura: ");
+                    altura = sc.nextDouble();
+
+                    socketCliente = new Socket(ipServidor, _PUERTO);
+
+                    inputVolumen = new DataInputStream(socketCliente.getInputStream());
+
+                    outputOpcion = new DataOutputStream(socketCliente.getOutputStream());
+                    outputRadio = new DataOutputStream(socketCliente.getOutputStream());
+                    outputAltura = new DataOutputStream(socketCliente.getOutputStream());
+
+                    outputOpcion.writeInt(operation);
+                    outputRadio.writeDouble(radio);
+                    outputAltura.writeDouble(altura);
+
+                    volumen = inputVolumen.readDouble();
+                    
+                    System.out.println("Entrada : " + "Radio = " + radio + ", " + "Altura = " + altura +"\tSalida : Volumen = " + volumen + "\n");
+
+                    inputVolumen.close();
+
+                    outputOpcion.close();
+                    outputAltura.close();
+                    outputRadio.close();
+                    break;
+                case 8:
+                    System.out.println("Calculando Volumen de ESFERA");
+                    System.out.println("Ingresa el radio: ");
+                    radio = sc.nextDouble();
+
+                    socketCliente = new Socket(ipServidor, _PUERTO);
+
+                    inputVolumen = new DataInputStream(socketCliente.getInputStream());
+
+                    outputOpcion = new DataOutputStream(socketCliente.getOutputStream());
+                    outputRadio = new DataOutputStream(socketCliente.getOutputStream());
+
+                    outputOpcion.writeInt(operation);
+                    outputRadio.writeDouble(radio);
+
+                    volumen = inputVolumen.readDouble();
+
+                    System.out.println("Entrada : " + "Radio = " + radio + "\tSalida : Volumen = " + volumen + "\n");
+
+                    inputVolumen.close();
+
+                    outputOpcion.close();
+                    outputRadio.close();
+                    break;
+                case 9:
+                    System.out.println("Calculando Volumen de CONO");
+                    System.out.println("Ingresa el radio: ");
+                    radio = sc.nextDouble();
+                    System.out.println("Ingresa la altura: ");
+                    altura = sc.nextDouble();
+                    System.out.println("Ingresa la generatriz: ");
+                    generatriz = sc.nextDouble();
+                    
+                    socketCliente = new Socket(ipServidor, _PUERTO);
+
+                    inputVolumen = new DataInputStream(socketCliente.getInputStream());
+
+                    outputOpcion = new DataOutputStream(socketCliente.getOutputStream());
+                    outputRadio = new DataOutputStream(socketCliente.getOutputStream());
+                    outputAltura = new DataOutputStream(socketCliente.getOutputStream());
+                    outputGeneratriz = new DataOutputStream(socketCliente.getOutputStream());
+                    
+                    outputOpcion.writeInt(operation);
+                    outputRadio.writeDouble(radio);
+                    outputAltura.writeDouble(altura);
+                    outputGeneratriz.writeDouble(generatriz);
+
+                    volumen = inputVolumen.readDouble();
+
+                    System.out.println("Entrada : " + "Radio = " + radio + ", Altura = " + altura + ", Generatriz = " + generatriz +"\tSalida : Volumen = " + volumen + "\n");
+                    
+                    inputVolumen.close();
+
+                    outputOpcion.close();
+                    outputAltura.close();
+                    outputRadio.close();
+                    outputGeneratriz.close();
+                    break;
+                case 10:
+                    System.out.println("Calculando Volumen de CUBO");
+                    System.out.println("Ingresa la arista: ");
+                    arista = sc.nextDouble();
+                    
+                    socketCliente = new Socket(ipServidor, _PUERTO);
+
+                    inputVolumen = new DataInputStream(socketCliente.getInputStream());
+
+                    outputOpcion = new DataOutputStream(socketCliente.getOutputStream());
+                    outputArista = new DataOutputStream(socketCliente.getOutputStream());
+                    
+                    outputOpcion.writeInt(operation);
+                    outputArista.writeDouble(arista);
+
+                    volumen = inputVolumen.readDouble();
+
+                    System.out.println("Entrada : " + "Arista = " + arista + "\tSalida : " + "Volumen = "+ volumen);
+                    
+                    inputVolumen.close();
+
+                    outputOpcion.close();
+                    outputArista.close();
+                    break;
+                case 11:
+                    System.out.println("Calculando Volumen de PRISMA");
+                    System.out.println("Ingrese el perimetro base: ");
+                    perimetroBase = sc.nextDouble();
+                    System.out.println("Ingresa la altura: ");
+                    altura = sc.nextDouble();
+                    System.out.println("Ingrese la area base: ");
+                    areaBase = sc.nextDouble();
+                    
+                    socketCliente = new Socket(ipServidor, _PUERTO);
+                    
+                    inputVolumen = new DataInputStream(socketCliente.getInputStream());
+
+                    outputOpcion = new DataOutputStream(socketCliente.getOutputStream());
+                    outputPerimetroBase = new DataOutputStream(socketCliente.getOutputStream());
+                    outputAltura = new DataOutputStream(socketCliente.getOutputStream());
+                    outputAreaBase = new DataOutputStream(socketCliente.getOutputStream());
+                    
+                    outputOpcion.writeInt(operation);
+                    outputPerimetroBase.writeDouble(perimetroBase);
+                    outputAltura.writeDouble(altura);
+                    outputAreaBase.writeDouble(areaBase);
+
+                    volumen = inputVolumen.readDouble();
+
+                    System.out.println("Entrada : " + "Perimetro Base = " + perimetroBase + ", Altura = " + altura + ", Area Base = " + areaBase + "\tSalida : Volumen = " + volumen);
+
+                    inputVolumen.close();
+
+                    outputOpcion.close();
+                    outputPerimetroBase.close();
+                    outputAltura.close();
+                    outputAreaBase.close();
+                    break;
+                case 12:
+                    System.out.println("Calculando Volumen de PIRAMIDE");
+                    System.out.println("Ingrese el perimetro base: ");
+                    perimetroBase = sc.nextDouble();
+                    System.out.println("Ingresa la altura: ");
+                    altura = sc.nextDouble();
+                    System.out.println("Ingrese la area base: ");
+                    areaBase = sc.nextDouble();
+                    System.out.println("Ingrese la apotema: ");
+                    apotema = sc.nextDouble();
+                    
+                    socketCliente = new Socket(ipServidor, _PUERTO);
+
+                    inputVolumen = new DataInputStream(socketCliente.getInputStream());
+
+                    outputOpcion = new DataOutputStream(socketCliente.getOutputStream());
+                    outputPerimetroBase = new DataOutputStream(socketCliente.getOutputStream());
+                    outputAltura = new DataOutputStream(socketCliente.getOutputStream());
+                    outputAreaBase = new DataOutputStream(socketCliente.getOutputStream());
+                    outputApotema = new DataOutputStream(socketCliente.getOutputStream());
+                    
+                    outputOpcion.writeInt(operation);
+                    outputPerimetroBase.writeDouble(perimetroBase);
+                    outputAltura.writeDouble(altura);
+                    outputAreaBase.writeDouble(areaBase);
+                    outputApotema.writeDouble(apotema);
+                    
+                    volumen = inputVolumen.readDouble();
+
+                    System.out.println("Entrada : " + "Perimetro Base = " + perimetroBase + ", Altura = " + altura + ", Area Base = " + areaBase + ", Apotema = " + apotema +"\tSalida : Volumen = " + volumen);
+
+                    inputVolumen.close();
+
+                    outputOpcion.close();
+                    outputPerimetroBase.close();
+                    outputAltura.close();
+                    outputAreaBase.close();
+                    outputApotema.close();
+                    break;
+                case 13:
+                    res = false;                      
             }
         } while (res == true);
 
