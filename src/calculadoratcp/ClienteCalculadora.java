@@ -113,7 +113,6 @@ public class ClienteCalculadora {
                     inputVolumen.close();
 
                     outputOpcion.close();
-                    outputAltura.close();
                     outputRadio.close();
                     break;
                 case 3:
